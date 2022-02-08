@@ -6,11 +6,6 @@ const jwt = require("jsonwebtoken");
 // {"userId":1,"name":"Harel","cash":10000,"credit":2000}
 //!upgrade to user schema to allowed autentication
 const userSchema = new mongoose.Schema({
-  userId: {
-    type: String,
-    required: true,
-    unique: true,
-  },
   name: {
     type: String,
     required: true,
@@ -38,6 +33,10 @@ const userSchema = new mongoose.Schema({
         throw new Error('Password cannot contain "password"');
       }
     },
+  },
+  isAdmin: {
+    type: Boolean,
+    default: false,
   },
   tokens: [
     {

@@ -57,7 +57,7 @@ const signup = async (req, res) => {
 //user update there own profile
 const updateMyProfile = async (req, res) => {
   const updates = Object.keys(req.body);
-  const allowedUpdates = ["name", "email", "password", "age"];
+  const allowedUpdates = ["name", "email", "password"];
   const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
 
   if (!isValidOperation) {

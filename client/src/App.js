@@ -4,7 +4,8 @@ import Login from "./components/Login";
 import Homepage from "./components/HomePage";
 import NotFound from "./components/NotFound";
 import Header from "./components/Header";
-import Users from "./components/Users";
+// import Users from "./components/Users";
+import Orders from "./components/Orders";
 import UsersActions from "./components/UsersActions";
 import "./App.css";
 function App() {
@@ -32,7 +33,8 @@ function App() {
         <Switch>
           <Route path="/" exact component={Homepage} />
           <Route path="/actions" exact component={UsersActions} />
-          <Route Path="/users" exact component={Users} />
+          <Route Path="/orders" exact component={Orders} />
+          {/* <Route Path="/users" exact component={Users} /> */}
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>

@@ -71,3 +71,29 @@ h3 {
     margin-top: 10px;
   }
 }
+.wrap-table {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 50px;
+}
+.order-details {
+  /* margin-top: 26px; */
+  border: 0.5rem solid #009879;
+  width: fit-content;
+  height: 100%;
+}
+.btn {
+  color: floralwhite;
+  border-color: transparent;
+  padding: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  background-color: rgb(27, 172, 123);
+  font-weight: 600;
+}
+.btn:hover {
+  background-color: rgb(37, 194, 142);
+}

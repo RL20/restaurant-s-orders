@@ -12,7 +12,15 @@ if (process.env.NODE_ENV === "development") {
 const api = axios.create({
   baseURL: url,
 });
-
+export const getOrders = async () => {
+  try {
+    let { data } = await api.get("/orders");
+    console.log("data", data);
+    return data;
+  } catch (e) {
+    console.log(e.message);
+  }
+};
 // router.post("/users", signup);
 
 // router.post("/users/logout", auth, logout);

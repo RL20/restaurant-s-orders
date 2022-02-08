@@ -8,9 +8,12 @@ export default function Header() {
         <Link to="/">
           <button>HomePage</button>
         </Link>
-        <Link to="/users">
-          <button>Users</button>
+        <Link to="/orders">
+          <button>Orders</button>
         </Link>
+        {/* <Link to="/users">
+          <button>Users</button>
+        </Link> */}
         <Link to="/actions">
           <button>Actions</button>
         </Link>

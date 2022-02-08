@@ -3,7 +3,10 @@ const cors = require("cors");
 const path = require("path");
 require("./src/db/mongoose");
 const userRouter = require("./src/routers/userRouter");
+const mealRouter = require("./src/routers/mealRouter");
+const orderRouter = require("./src/routers/orderRouter");
 const app = express();
+
 app.use(express.json());
 app.use(cors());
 
@@ -12,6 +15,8 @@ const port = process.env.PORT || 9000;
 const publicPath = path.join(__dirname, "client/build");
 app.use(express.static(publicPath));
 app.use("/api", userRouter); //user router
+app.use("/api", mealRouter); //meal router
+app.use("/api", orderRouter); //order router
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(publicPath, "index.html"));
 });

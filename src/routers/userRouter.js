@@ -6,7 +6,7 @@ const { login, logout, logoutAll, signup, myProfile, updateMyProfile, deleteMyPr
 router.post("/users", signup);
 router.post("/users/login", login);
 router.post("/users/logout", auth, logout);
-router.post("/users/logoutAll", auth, logoutAll);
+// router.post("/users/logoutAll", auth, logoutAll);
 router.get("/users/me", auth, myProfile);
 router.patch("/users/me", auth, updateMyProfile);
 router.delete("/users/me", auth, deleteMyProfile);
