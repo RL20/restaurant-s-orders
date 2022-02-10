@@ -4,7 +4,7 @@ import "../styles/users.css";
 import ShowOrderDetails from "./ShowOrderDetails.jsx";
 
 export default function Orders() {
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState(null);
   const [ordersDetails, setOrdersDetails] = useState(null);
   const [show, setShow] = useState([]);
 
@@ -43,7 +43,7 @@ export default function Orders() {
               </tr>
             </thead>
             <tbody>
-              {orders.length !== 0 &&
+              {orders &&
                 orders.map((order, i) => {
                   return (
                     <tr className={show[i] ? "active-row" : ""} key={i} onClick={() => style(i, order)}>
