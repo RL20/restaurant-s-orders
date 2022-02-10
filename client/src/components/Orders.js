@@ -2,14 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getOrders } from "../api/Api";
 import "../styles/users.css";
 import ShowOrderDetails from "./ShowOrderDetails.jsx";
-import { getUser } from "../api/Api";
-/*
 
-import socketio from "socket.io-client";
-const socket = socketio.connect("127.0.0.1:3001");
-
-
-*/
 export default function Orders() {
   const [orders, setOrders] = useState([]);
   const [ordersDetails, setOrdersDetails] = useState(null);
@@ -18,7 +11,7 @@ export default function Orders() {
   const getAllOrders = async () => {
     const data = await getOrders();
     // const { data } = await axios.get("http://localhost:9000/api/orders");
-    console.log(data);
+    console.log("Orders", data);
     setOrders(data);
   };
 

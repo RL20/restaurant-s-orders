@@ -9,7 +9,8 @@ function UsersActions() {
 
   return (
     <div>
-      <App2 />
+      {/* <App2 /> */}
+      Actions
     </div>
     // <div>
     //   <form
