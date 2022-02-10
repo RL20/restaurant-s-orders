@@ -7,9 +7,15 @@ import Header from "./components/Header";
 // import Users from "./components/Users";
 import Orders from "./components/Orders";
 import UsersActions from "./components/UsersActions";
+import Customer from "./components/Customer/Customer";
 import "./App.css";
+import { getUserByToken } from "./api/Api";
+
+// import jwt from "jsonwebtoken";
 function App() {
   const [token, setToken] = useState(null);
+  const [loggedUser, setLoggedUser] = useState({});
+  const [isAdmin, setIsAdmin] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
@@ -23,18 +29,31 @@ function App() {
   }, [token]);
 
   if (!token) {
-    return <Login setToken={setToken} />;
+    return <Login setToken={setToken} setLoggedUser={setLoggedUser} setIsAdmin={setIsAdmin} />;
   }
 
   return (
     <div className="App">
+      {console.log("loggedUser", loggedUser)}
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route path="/" exact component={Homepage} />
-          <Route path="/actions" exact component={UsersActions} />
-          <Route Path="/orders" exact component={Orders} />
-          {/* <Route Path="/users" exact component={Users} /> */}
+          {/* if uder.isAdmi{} */}
+          {!isAdmin && (
+            <>
+              <Route path="/" exact component={Customer} />
+              <Route component={NotFound} />
+            </>
+          )}
+          {isAdmin && (
+            <>
+              <Route path="/admin" exact component={Homepage} />
+              <Route path="/admin/actions" exact component={UsersActions} />
+              <Route Path="/admin/orders" exact>
+                <Orders loggedUser={loggedUser} />
+              </Route>
+            </>
+          )}
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>

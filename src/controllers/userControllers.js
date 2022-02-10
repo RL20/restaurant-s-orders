@@ -81,7 +81,17 @@ const deleteMyProfile = async (req, res) => {
     res.status(500).send();
   }
 };
-
+//get user by token
+const getUserByToken = async (req, res) => {
+  const token = req.params.token;
+  try {
+    const decoded = jwt.verify(token, "tokensecretword");
+    const user = await User.findOne({ _id: decoded._id, "tokens.token": token });
+    res.status(200).send(user);
+  } catch (e) {
+    res.status(500).send();
+  }
+};
 module.exports = {
   login,
   logout,
@@ -90,4 +100,5 @@ module.exports = {
   myProfile,
   updateMyProfile,
   deleteMyProfile,
+  getUserByToken,
 };

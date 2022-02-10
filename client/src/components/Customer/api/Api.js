@@ -12,9 +12,9 @@ if (process.env.NODE_ENV === "development") {
 const api = axios.create({
   baseURL: url,
 });
-export const getUserByToken = async (token) => {
+export const getMeals = async () => {
   try {
-    let { data } = await api.get(`/users/${token}`);
+    let { data } = await api.get("/meals");
     console.log("data", data);
     return data;
   } catch (e) {
@@ -24,6 +24,16 @@ export const getUserByToken = async (token) => {
 export const getOrders = async () => {
   try {
     let { data } = await api.get("/orders");
+    console.log("data", data);
+    return data;
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+// router.post("/orders", addOrder);
+export const addOrder = async (orderObj) => {
+  try {
+    let { data } = await api.post("/orders", orderObj);
     console.log("data", data);
     return data;
   } catch (e) {

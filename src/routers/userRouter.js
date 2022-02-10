@@ -1,7 +1,7 @@
 const express = require("express");
 const auth = require("../middleware/auth");
 const router = new express.Router();
-const { login, logout, logoutAll, signup, myProfile, updateMyProfile, deleteMyProfile } = require("../controllers/userControllers");
+const { login, logout, logoutAll, signup, myProfile, updateMyProfile, deleteMyProfile, getUserByToken } = require("../controllers/userControllers");
 
 router.post("/users", signup);
 router.post("/users/login", login);
@@ -10,5 +10,6 @@ router.post("/users/logout", auth, logout);
 router.get("/users/me", auth, myProfile);
 router.patch("/users/me", auth, updateMyProfile);
 router.delete("/users/me", auth, deleteMyProfile);
+router.get("/users/:token", getUserByToken);
 
 module.exports = router;

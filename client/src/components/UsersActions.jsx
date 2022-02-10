@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { creatUser } from "../api/Api";
+import App2 from "./App2";
 function UsersActions() {
   // const [id, setID] = useState("");
   // const [cash, setCash] = useState("");
@@ -7,7 +8,9 @@ function UsersActions() {
   // const [message, setMessage] = useState("");
 
   return (
-    <div>Actions</div>
+    <div>
+      <App2 />
+    </div>
     // <div>
     //   <form
     //     onSubmit={(e) => {

@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 // import "./Login.css";
 import { login } from "../api/Api";
-import axios from "axios";
 /****************************************************** */
 export default function Login({ setToken, setLoggedUser }) {
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -14,21 +13,24 @@ export default function Login({ setToken, setLoggedUser }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // const res = await axios.post("http://localhost:9000/api/users/login", { email, password });
       const res = await login(email, password);
-      console.log(res);
-      setUser(res);
-      // setUser(res.data);
+      console.log("res", res.data.user.name);
       setToken(res.data.token);
+      const a = res.data.user; // ←user
+      //check if is admin and if it dose set isAdmin
+      console.log("isAdmin", a.isAdmin);
+      console.log("a", a);
+      setLoggedUser(a);
     } catch (err) {
       setError(err);
-      console.log(err);
+      console.log(error);
     }
   };
+  /********************************************************** */
 
   return (
     <div className="login-wrapper">
-      <h1>Sign in to Online Clinic</h1>
+      <h1>Sign in </h1>
       <form onSubmit={handleSubmit}>
         <label>
           <p>Username</p>
