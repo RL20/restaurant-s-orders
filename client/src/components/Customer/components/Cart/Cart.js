@@ -45,7 +45,8 @@ const Cart = (props) => {
       // 	"phone": "0526999999"
       // },
 
-      user: "620002210db586b17de812f2",
+      // user: "620002210db586b17de812f2",
+      user: props.user._id,
     };
     console.log("orderObj", orderObj);
 
@@ -107,7 +108,7 @@ const Cart = (props) => {
       </div>
     </React.Fragment>
   );
-
+  console.log("props", props);
   return (
     <Modal onCloseCart={props.onCloseCart}>
       {!isSubmitting && !didSubmit && cartModalContent}

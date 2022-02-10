@@ -1,15 +1,29 @@
 import { Fragment } from "react";
-
+import { useHistory } from "react-router";
 import HeaderCartButton from "./HeaderCartButton";
 import mealsImage from "../../assets/meals.jpg";
 import classes from "./Header.module.css";
 
 const Header = (props) => {
+  const history = useHistory();
+  // const userString = localStorage.getItem("loggedUser");
+  // const userObj = JSON.parse(userString);
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("loggedUser");
+    props.handleLogout();
+  };
+  const adminNevigate = () => {
+    history.push("/admin");
+  };
   return (
     <Fragment>
       <header className={classes.header}>
         <HeaderCartButton onClick={props.onShowCart} />
         <h1>שווארמה זוהר </h1>
+        <button onClick={logout}>התנתק</button>
+        {props.user?.isAdmin && <button onClick={adminNevigate}>אדמין</button>}
       </header>
       <div className={classes["main-image"]}>
         <img src={mealsImage} alt="A table full of delicious food!" />

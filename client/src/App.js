@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import Orders from "./components/Orders";
 import UsersActions from "./components/UsersActions";
 import Customer from "./components/Customer/Customer";
+import Unauthorized from "./components/Unauthorized";
 import "./App.css";
 import { getUserByToken } from "./api/Api";
 
@@ -28,32 +29,50 @@ function App() {
     // history.push("/home");
   }, [token]);
 
+  useEffect(() => {
+    if (loggedUser?.name) {
+      console.log("hello from logged");
+      localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
+    }
+    const userString = localStorage.getItem("loggedUser");
+    if (userString !== JSON.stringify(loggedUser) || !loggedUser.name) {
+      const userObj = JSON.parse(userString);
+      setLoggedUser(userObj);
+    }
+  }, [loggedUser]);
+
   if (!token) {
     return <Login setToken={setToken} setLoggedUser={setLoggedUser} setIsAdmin={setIsAdmin} />;
   }
-
+  const reset = () => {
+    setToken(null);
+    setLoggedUser({});
+  };
   return (
     <div className="App">
       {console.log("loggedUser", loggedUser)}
       <BrowserRouter>
-        <Header />
+        {loggedUser?.isAdmin && <Header />}
         <Switch>
           {/* if uder.isAdmi{} */}
-          {!isAdmin && (
-            <>
-              <Route path="/" exact component={Customer} />
-              <Route component={NotFound} />
-            </>
-          )}
-          {isAdmin && (
+
+          <Route path="/" exact render={() => <Customer loggedUser={loggedUser} handleLogout={reset} />} />
+          {/* <Route path="/" exact component={Customer} /> */}
+
+          {loggedUser?.isAdmin ? (
             <>
               <Route path="/admin" exact component={Homepage} />
               <Route path="/admin/actions" exact component={UsersActions} />
-              <Route Path="/admin/orders" exact>
+              <Route path="/admin/orders" exact render={() => <Orders loggedUser={loggedUser} />} />
+
+              {/* <Route Path="/admin/orders" exact>
                 <Orders loggedUser={loggedUser} />
-              </Route>
+              </Route> */}
             </>
+          ) : (
+            <Route path="/admin" component={Unauthorized} />
           )}
+
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>

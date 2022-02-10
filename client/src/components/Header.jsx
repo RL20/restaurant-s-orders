@@ -5,16 +5,16 @@ export default function Header() {
   return (
     <div>
       <header>
-        <Link to="/">
+        <Link to="/admin">
           <button>HomePage</button>
         </Link>
-        <Link to="/orders">
+        <Link to="/admin/orders">
           <button>Orders</button>
         </Link>
         {/* <Link to="/users">
           <button>Users</button>
         </Link> */}
-        <Link to="/actions">
+        <Link to="/admin/actions">
           <button>Actions</button>
         </Link>
       </header>
