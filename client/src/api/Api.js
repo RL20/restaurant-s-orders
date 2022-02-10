@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === "development") {
   url = "http://localhost:9000/api";
 }
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: url,
 });
 export const getUserByToken = async (token) => {

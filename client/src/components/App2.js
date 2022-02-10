@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import socketIOClient from "socket.io-client";
 import Orders from "./Orders";
+import { api } from "../api/Api";
 // const ENDPOINT = "http://127.0.0.1:9000";
-const ENDPOINT = "http://localhost:9000";
+const ENDPOINT = api;
 
 function App2() {
   const [response, setResponse] = useState("");
