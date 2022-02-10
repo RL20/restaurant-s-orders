@@ -23,7 +23,7 @@ export const getUserByToken = async (token) => {
 };
 export const getOrders = async () => {
   try {
-    let { data } = await api.get("/orders");
+    let { data } = await api.get("/v1/orders");
     console.log("data", data);
     return data;
   } catch (e) {
