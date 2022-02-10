@@ -44,6 +44,7 @@ export default function Orders() {
             </thead>
             <tbody>
               {orders &&
+                orders.length &&
                 orders.map((order, i) => {
                   return (
                     <tr className={show[i] ? "active-row" : ""} key={i} onClick={() => style(i, order)}>
