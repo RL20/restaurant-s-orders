@@ -3,7 +3,7 @@ import axios from "axios";
 let url;
 
 if (process.env.NODE_ENV === "production") {
-  url = "api";
+  url = "https://restaurant-ord.herokuapp.com/api";
 }
 if (process.env.NODE_ENV === "development") {
   url = "http://localhost:9000/api";
@@ -23,7 +23,7 @@ export const getUserByToken = async (token) => {
 };
 export const getOrders = async () => {
   try {
-    let { data } = await api.get("/v1/orders");
+    let { data } = await api.get("/orders");
     console.log("data", data);
     return data;
   } catch (e) {
