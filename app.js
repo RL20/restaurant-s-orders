@@ -12,7 +12,7 @@ const userRouter = require("./src/routers/userRouter");
 const mealRouter = require("./src/routers/mealRouter");
 const orderRouter = require("./src/routers/orderRouter");
 //!ws---------------------------------------------------
-const index = require("./src/routers/index");
+// const index = require("./src/routers/index");
 
 //!-----------------------------------------------------
 const app = express();

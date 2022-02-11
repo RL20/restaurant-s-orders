@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-// import "./Login.css";
+import "../styles/Login.css";
 import { login } from "../api/Api";
 /****************************************************** */
 export default function Login({ setToken, setLoggedUser }) {
@@ -30,26 +30,26 @@ export default function Login({ setToken, setLoggedUser }) {
 
   return (
     <div className="login-wrapper">
-      <h1>Sign in </h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <p>Username</p>
-        </label>
+      <form className="login-form" onSubmit={handleSubmit}>
+        <h1>התחברות </h1>
+        {/* <label>
+          <p>אימייל</p>
+        </label> */}
         <div className="ui left icon input">
-          <input type="text" placeholder="Username" onChange={(e) => setEmail(e.target.value)} />
+          <input className="form-input" type="text" placeholder="אימייל" onChange={(e) => setEmail(e.target.value)} />
           <i className="user icon"></i>
         </div>
 
-        <label>
-          <p>Password</p>
-        </label>
+        {/* <label>
+          <p>סיסמה</p>
+        </label> */}
         <div className="ui left icon input">
-          <input type="password" onChange={(e) => setPassword(e.target.value)} />
+          <input placeholder="סיסמה" className="form-input" type="password" onChange={(e) => setPassword(e.target.value)} />
           <i className="lock icon"></i>
         </div>
         <div>
-          <button className="ui blue submit button" type="submit">
-            Login
+          <button className="btn1" type="submit">
+            כניסה
           </button>
         </div>
       </form>

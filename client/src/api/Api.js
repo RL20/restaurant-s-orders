@@ -12,10 +12,9 @@ if (process.env.NODE_ENV === "development") {
 export const api = axios.create({
   baseURL: url,
 });
-export const getUserByToken = async (token) => {
+export const deleteOrder = async (id) => {
   try {
-    let { data } = await api.get(`/users/${token}`);
-    console.log("data", data);
+    let { data } = await api.delete(`/orders/${id}`);
     return data;
   } catch (e) {
     console.log(e.message);
@@ -30,6 +29,60 @@ export const getOrders = async () => {
     console.log(e.message);
   }
 };
+export const getMeals = async () => {
+  try {
+    let { data } = await api.get("/meals");
+    console.log("data", data);
+    return data;
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+export const getMeal = async (id) => {
+  try {
+    let { data } = await api.get(`/meals/${id}`);
+    console.log("data", data);
+    return data;
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+export const addMeal = async (obj) => {
+  try {
+    let { data } = await api.post(`/meals`, obj);
+    return data;
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+export const updateMeal = async (id, obj) => {
+  try {
+    const { data } = await api.put(`/meals/${id}`, obj);
+    return data;
+  } catch (e) {
+    console.log(e.message);
+    console.dir(e);
+  }
+};
+export const deleteMeal = async (id) => {
+  try {
+    let { data } = await api.delete(`/meals/${id}`);
+    console.log("data from delete", data);
+    return data;
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+export const getUserByToken = async (token) => {
+  try {
+    let { data } = await api.get(`/users/${token}`);
+    console.log("data", data);
+    return data;
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
 // router.post("/users", signup);
 
 // router.post("/users/logout", auth, logout);

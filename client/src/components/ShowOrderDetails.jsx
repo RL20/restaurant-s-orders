@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from "react";
-
+import { deleteOrder } from "../api/Api";
 function ShowOrderDetails({ details }) {
   const [show, setShow] = useState([]);
+  console.log("details", details);
 
   const style = (index) => {
     const newShow = show.map((e) => false); //init to false
     newShow[index] = !show[index];
     setShow(newShow);
   };
-
+  const handleDone = () => {
+    console.log("updated");
+  };
+  const handleCancel = (id) => {
+    console.log("order id canceled", id);
+    // deleteOrder(id);
+  };
   return (
     <div>
       <h2> פרטי הזמנה</h2>
@@ -35,9 +42,12 @@ function ShowOrderDetails({ details }) {
             })}
         </tbody>
       </table>
-      <button className="btn">ביטול הזמנה</button>
-      <button className="btn">שינוי הזמנה</button>
-      <button className="btn">בוצע</button>
+      <button className="btn" onClick={() => handleCancel(details._id)}>
+        ביטול הזמנה
+      </button>
+      <button className="btn" onClick={handleDone}>
+        בוצע
+      </button>
     </div>
   );
 }

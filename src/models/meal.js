@@ -19,7 +19,7 @@ const Meal = mongoose.model("Meal", {
     type: String,
     required: true,
     trim: true,
-    minlength: 10,
+    // minlength: 10,
   },
   price: {
     type: Number,

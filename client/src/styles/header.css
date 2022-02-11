@@ -1,0 +1,22 @@
+.btns {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 5px;
+}
+
+.btns button {
+  margin-left: 0.5rem;
+  background: #009879;
+  color: white;
+  font-weight: bold;
+  padding: 5px 5px;
+  cursor: pointer;
+  transition: all 0.4s linear;
+  border-radius: 5px;
+}
+
+.btns button:hover {
+  background: #03b491;
+}

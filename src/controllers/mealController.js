@@ -43,7 +43,7 @@ const updateMeal = async (req, res) => {
   const updates = Object.keys(req.body);
   console.log("req.body", req.body);
 
-  const allowUpdates = ["image", "name", "description", "price"];
+  const allowUpdates = ["mealId", "category", "image", "name", "description", "price"];
   const isValidOperation = updates.every((update) => {
     return allowUpdates.includes(update);
   });
