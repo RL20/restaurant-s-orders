@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { updateMeal } from "../../api/Api";
+import "../../styles/Form.css";
 
-function Update({ mealObj, showState }) {
+function Update({ mealObj, showState, callBackParent }) {
   const [mealId, setMealId] = useState(mealObj.mealId);
   const [name, setName] = useState(mealObj.name);
   const [category, setCategory] = useState(mealObj.category);
@@ -38,10 +39,11 @@ function Update({ mealObj, showState }) {
     await updateMeal(mealObj._id, Obj);
     const [show, setShow] = showState;
     setShow(!show);
-    window.location.reload();
+    // window.location.reload();
+    callBackParent();
   };
   return (
-    <div>
+    <div className="form-container">
       <form onSubmit={confirm} className="create-form" action="">
         <label htmlFor="mealId">מזהה ארוחה</label>
         <input value={mealId} onChange={inputValue} name="mealId" id="name" type="text" />

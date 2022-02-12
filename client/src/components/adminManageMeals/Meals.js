@@ -21,12 +21,14 @@ function Meals() {
     return () => {};
   }, [renderCom]);
   // }, [meals]);
-
+  const handlerand = () => {
+    setRenderCom(!renderCom);
+  };
   const mealList = () => {
     return (
       meals &&
       meals.map((meal) => {
-        return <MealItem key={meal._id} mealObj={meal} />;
+        return <MealItem key={meal._id} mealObj={meal} callBackParent={handlerand} />;
       })
     );
   };

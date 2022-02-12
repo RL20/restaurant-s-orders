@@ -55,7 +55,7 @@ function Create({ render }) {
   };
   if (show) {
     return (
-      <div className="create-btn">
+      <div className="create-form-wrap">
         <form onSubmit={confirm} className="create-form" action="">
           <label htmlFor="mealId">מזהה ארוחה</label>
           <input value={mealId} onChange={inputValue} name="mealId" id="name" type="text" />
@@ -83,7 +83,9 @@ function Create({ render }) {
   }
   return (
     <div>
-      <button onClick={handleShow}>hhh</button>
+      <button className="create-btn" onClick={handleShow}>
+        הוספת ארוחה חדשה
+      </button>
     </div>
   );
 }

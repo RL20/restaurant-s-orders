@@ -15,14 +15,15 @@ import "../../styles/MealItem.css";
  */
 
 // function MealItem({ _id, mealId, category, image, name, description, price }) {
-function MealItem({ mealObj }) {
+function MealItem({ mealObj, callBackParent }) {
   const { _id, mealId, category, image, name, description, price } = mealObj;
   const [show, setShow] = useState(false);
 
   const handelDelete = async (_id) => {
     console.log("delet meal fetch");
     await deleteMeal(_id);
-    window.location.reload();
+    // window.location.reload();
+    callBackParent();
   };
   // const handelUpdate = async (_id, obj) => {
   //   console.log("updat meal");
@@ -34,7 +35,7 @@ function MealItem({ mealObj }) {
   //   SetIsShow(!isShow);
   // };
 
-  if (show) return <Update id={_id} showState={[show, setShow]} mealObj={{ _id, mealId, category, image, name, description, price }} />;
+  if (show) return <Update id={_id} showState={[show, setShow]} callBackParent={callBackParent} mealObj={{ _id, mealId, category, image, name, description, price }} />;
   return (
     <div className="meal-card">
       <h3>{`  ${mealId} :מזהה ארוחה`}</h3>
