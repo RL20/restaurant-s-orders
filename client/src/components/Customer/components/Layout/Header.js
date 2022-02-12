@@ -25,8 +25,14 @@ const Header = (props) => {
       <header className={classes.header}>
         <HeaderCartButton onClick={props.onShowCart} />
         <h1>שווארמה זוהר </h1>
-        <button onClick={logout}>התנתק</button>
-        {props.user?.isAdmin && <button onClick={adminNevigate}>אדמין</button>}
+        <button className="HeaderCartButton_button__NUslz" onClick={logout}>
+          התנתק
+        </button>
+        {props.user?.isAdmin && (
+          <button className="HeaderCartButton_button__NUslz" onClick={adminNevigate}>
+            אדמין
+          </button>
+        )}
       </header>
       <div className={classes["main-image"]}>
         <img src={mealsImage} alt="A table full of delicious food!" />

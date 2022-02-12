@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getNewOrders, deleteOrder } from "../api/Api";
+import { getNewOrders } from "../api/Api";
 import "../styles/users.css";
 import ShowOrderDetails from "./ShowOrderDetails.jsx";
 
@@ -8,7 +8,7 @@ export default function Orders() {
   const [ordersDetails, setOrdersDetails] = useState(null);
   const [orderId, setOrdersId] = useState(null);
   const [show, setShow] = useState([]);
-  const [renderCom, setRenderCom] = useState(false);
+  // const [renderCom, setRenderCom] = useState(false);
   const getAllOrders = async () => {
     const data = await getNewOrders();
     // const { data } = await axios.get("http://localhost:9000/api/orders");
@@ -31,6 +31,20 @@ export default function Orders() {
   // const handlerand = () => {
   //   setRenderCom(!renderCom);
   // };
+  const formatDate = (date, format) => {
+    const map = {
+      MM: (date.getMonth() + 1).toString().padStart(2, "0"),
+      dd: date.getDate().toString().padStart(2, "0"),
+      yy: date.getFullYear().toString().slice(-2).padStart(2, "0"),
+      yyyy: date.getFullYear(),
+      hh: date.getHours().toString().padStart(2, "0"),
+      mm: date.getMinutes().toString().padStart(2, "0"),
+      ss: date.getSeconds().toString().padStart(2, "0"),
+    };
+
+    return format.replace(/MM|dd|yyyy|yy|hh|mm|ss/gi, (matched) => map[matched]);
+  };
+
   const showOrders = () => {
     return (
       <div className="wrap-table">
@@ -56,7 +70,7 @@ export default function Orders() {
                       <td>{order.address.phone}</td>
                       <td>{order.address.city}</td>
                       <td>{order.address.street}</td>
-                      <td>{order.dateAdded}</td>
+                      <td>{formatDate(new Date(order.dateAdded), "dd/MM/yy - hh:mm")}</td>
                       <td>{order.user.name}</td>
                       <td>{order._id}</td>
                     </tr>
