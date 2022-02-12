@@ -12,6 +12,21 @@ if (process.env.NODE_ENV === "development") {
 const api = axios.create({
   baseURL: url,
 });
+
+/************************************ */
+export const userLogOut = async (token) => {
+  try {
+    const auth = `Bearer ${token}`;
+
+    await api.post("/users/logout", {}, { headers: { Authorization: auth } });
+  } catch (err) {
+    console.log(err);
+  }
+  window.localStorage.removeItem("token");
+  // window.location.reload(false);
+};
+
+/************************************ */
 export const getMeals = async () => {
   try {
     let { data } = await api.get("/meals");

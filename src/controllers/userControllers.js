@@ -19,7 +19,7 @@ const logout = async (req, res) => {
     });
     await req.user.save();
 
-    res.send();
+    res.status(200).send();
   } catch (e) {
     res.status(500).send();
   }

@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import "../styles/Login.css";
 import { login } from "../api/Api";
+import Signup from "./Signup";
 /****************************************************** */
 export default function Login({ setToken, setLoggedUser }) {
   // const [user, setUser] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
+  const [singin, setSingin] = useState(false);
 
   /****************************************************** */
   const handleSubmit = async (e) => {
@@ -27,7 +28,7 @@ export default function Login({ setToken, setLoggedUser }) {
     }
   };
   /********************************************************** */
-
+  if (singin) return <Signup />;
   return (
     <div className="login-wrapper">
       <form className="login-form" onSubmit={handleSubmit}>
@@ -53,10 +54,7 @@ export default function Login({ setToken, setLoggedUser }) {
           </button>
         </div>
       </form>
+      <div onClick={() => setSingin(!singin)}>Singin</div>
     </div>
   );
 }
-
-Login.propTypes = {
-  setToken: PropTypes.func.isRequired,
-};

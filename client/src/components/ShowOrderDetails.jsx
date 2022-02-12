@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { deleteOrder } from "../api/Api";
-function ShowOrderDetails({ details }) {
+import { deleteOrder, updateOrderStatus } from "../api/Api";
+
+function ShowOrderDetails({ orderId, details, setOrders, orders, setOrdersDetails }) {
   const [show, setShow] = useState([]);
   console.log("details", details);
 
@@ -9,12 +10,19 @@ function ShowOrderDetails({ details }) {
     newShow[index] = !show[index];
     setShow(newShow);
   };
-  const handleDone = () => {
+  const handleDone = async (id) => {
     console.log("updated");
+    await updateOrderStatus(id);
+    const newOrder = orders.filter((order) => order._id !== id);
+    setOrders(newOrder);
+    setOrdersDetails(null);
   };
-  const handleCancel = (id) => {
+  const handleCancel = async (id) => {
     console.log("order id canceled", id);
-    // deleteOrder(id);
+    await deleteOrder(id);
+    const newOrder = orders.filter((order) => order._id !== id);
+    setOrders(newOrder);
+    setOrdersDetails(null);
   };
   return (
     <div>
@@ -22,10 +30,10 @@ function ShowOrderDetails({ details }) {
       <table className="styled-table">
         <thead>
           <tr>
-            <td> סה"כ </td>
-            <td> מחיר </td>
-            <td> כמות </td>
-            <td> פריט </td>
+            <td>סה"כ</td>
+            <td>מחיר</td>
+            <td>כמות</td>
+            <td>פריט</td>
           </tr>
         </thead>
         <tbody>
@@ -33,19 +41,19 @@ function ShowOrderDetails({ details }) {
             details.map((item, i) => {
               return (
                 <tr className={show[i] ? "active-row" : ""} key={i} onClick={() => style(i)}>
-                  <td> {item.price * item.amount}</td>
-                  <td> {item.price}</td>
-                  <td> {item.amount}</td>
-                  <td> {item.name}</td>
+                  <td>{item.price * item.amount}</td>
+                  <td>{item.price}</td>
+                  <td>{item.amount}</td>
+                  <td>{item.name}</td>
                 </tr>
               );
             })}
         </tbody>
       </table>
-      <button className="btn" onClick={() => handleCancel(details._id)}>
+      <button className="btn" onClick={() => handleCancel(orderId)}>
         ביטול הזמנה
       </button>
-      <button className="btn" onClick={handleDone}>
+      <button className="btn" onClick={() => handleDone(orderId)}>
         בוצע
       </button>
     </div>

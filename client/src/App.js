@@ -6,6 +6,7 @@ import NotFound from "./components/NotFound";
 import Header from "./components/Header";
 // import Users from "./components/Users";
 import Orders from "./components/Orders";
+import OrdersDone from "./components/OrdersDone";
 import UsersActions from "./components/UsersActions";
 import Customer from "./components/Customer/Customer";
 import Unauthorized from "./components/Unauthorized";
@@ -64,6 +65,7 @@ function App() {
               <Route path="/admin" exact component={Homepage} />
               <Route path="/admin/actions" exact component={UsersActions} />
               <Route path="/admin/orders" exact render={() => <Orders loggedUser={loggedUser} />} />
+              <Route path="/admin/ordersdone" exact render={() => <OrdersDone loggedUser={loggedUser} />} />
 
               {/* <Route Path="/admin/orders" exact>
                 <Orders loggedUser={loggedUser} />

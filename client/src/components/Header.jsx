@@ -7,17 +7,20 @@ export default function Header() {
     <div>
       <header>
         <div className="btns">
-          <Link to="/admin">
-            <button>HomePage</button>
-          </Link>
-          <Link to="/admin/orders">
-            <button>Orders</button>
+          <Link to="/admin/ordersdone">
+            <button>היסטורית הזמנות</button>
           </Link>
           {/* <Link to="/users">
           <button>Users</button>
         </Link> */}
+          <Link to="/admin/orders">
+            <button>הזמנות</button>
+          </Link>
           <Link to="/admin/actions">
-            <button>Actions</button>
+            <button>פעולות</button>
+          </Link>
+          <Link to="/admin">
+            <button>בית</button>
           </Link>
         </div>
       </header>

@@ -12,6 +12,15 @@ if (process.env.NODE_ENV === "development") {
 export const api = axios.create({
   baseURL: url,
 });
+export const updateOrderStatus = async (id) => {
+  try {
+    const { data } = await api.put(`/orders/done/${id}`);
+    return data;
+  } catch (e) {
+    console.log(e.message);
+    console.dir(e);
+  }
+};
 export const deleteOrder = async (id) => {
   try {
     let { data } = await api.delete(`/orders/${id}`);
@@ -23,6 +32,24 @@ export const deleteOrder = async (id) => {
 export const getOrders = async () => {
   try {
     let { data } = await api.get("/orders");
+    console.log("data", data);
+    return data;
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+export const getNewOrders = async () => {
+  try {
+    let { data } = await api.get("/orders/new");
+    console.log("data", data);
+    return data;
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+export const getOrdersHistory = async () => {
+  try {
+    let { data } = await api.get("/orders/done");
     console.log("data", data);
     return data;
   } catch (e) {
@@ -64,6 +91,7 @@ export const updateMeal = async (id, obj) => {
     console.dir(e);
   }
 };
+
 export const deleteMeal = async (id) => {
   try {
     let { data } = await api.delete(`/meals/${id}`);

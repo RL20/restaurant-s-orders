@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
+const { boolean } = require("yargs");
 // {"-Md5ciYzlrM5XE99ikXP":{"orderedItems":[{"amount":2,"id":"m4","name":"Green Bowl","price":18.99}],"user":{"city":"London","name":"Divyam Kakkar","postalCode":"208005","street":"Lajpat Nagar"}}
 const orderSchema = new mongoose.Schema({
   // orederNumber: { type: Number, default: 0 },
@@ -25,6 +26,7 @@ const orderSchema = new mongoose.Schema({
     ref: "User",
   },
   dateAdded: { type: Date, default: new Date() },
+  done: { type: Boolean, default: false },
 });
 
 const Order = mongoose.model("Order", orderSchema);
