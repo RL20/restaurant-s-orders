@@ -20,16 +20,29 @@ const Header = (props) => {
   const adminNevigate = () => {
     history.push("/admin");
   };
+  const btnStyle = {
+    cursor: "pointer",
+    font: "inherit",
+    border: "none",
+    backgroundColor: "#4d1601",
+    color: "white",
+    padding: "0.75rem 3rem",
+    display: "flex",
+    justifyContent: "space-around",
+    alignitems: "center",
+    borderRadius: "25px",
+    fontweight: "bold",
+  };
   return (
     <Fragment>
       <header className={classes.header}>
         <HeaderCartButton onClick={props.onShowCart} />
         <h1>שווארמה זוהר </h1>
-        <button className="HeaderCartButton_button__NUslz" onClick={logout}>
+        <button style={btnStyle} onClick={logout}>
           התנתק
         </button>
         {props.user?.isAdmin && (
-          <button className="HeaderCartButton_button__NUslz" onClick={adminNevigate}>
+          <button style={btnStyle} onClick={adminNevigate}>
             אדמין
           </button>
         )}
