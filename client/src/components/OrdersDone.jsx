@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getNewOrders } from "../api/Api";
+import { getOrdersHistory } from "../api/Api";
 import "../styles/users.css";
 import ShowOrderDetailsHistory from "./ShowOrderDetailsHistory.jsx";
 
@@ -10,7 +10,7 @@ export default function OrdersDone() {
   const [show, setShow] = useState([]);
   // const [renderCom, setRenderCom] = useState(false);
   const getAllOrders = async () => {
-    const data = await getNewOrders();
+    const data = await getOrdersHistory();
     // const { data } = await axios.get("http://localhost:9000/api/orders");
     console.log("Orders", data);
     setOrders(data);

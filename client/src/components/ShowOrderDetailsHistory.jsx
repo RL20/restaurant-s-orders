@@ -45,7 +45,7 @@ function ShowOrderDetailsHistory({ orderId, details, setOrders, orders, setOrder
         </tbody>
       </table>
       <button className="btn" onClick={() => handleCancel(orderId)}>
-        ביטול הזמנה
+        מחק הזמנה
       </button>
     </div>
   );
