@@ -1,10 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
-const { boolean } = require("yargs");
-// {"-Md5ciYzlrM5XE99ikXP":{"orderedItems":[{"amount":2,"id":"m4","name":"Green Bowl","price":18.99}],"user":{"city":"London","name":"Divyam Kakkar","postalCode":"208005","street":"Lajpat Nagar"}}
-const orderSchema = new mongoose.Schema({
-  // orederNumber: { type: Number, default: 0 },
 
+const orderSchema = new mongoose.Schema({
   orderedItems: {
     type: Array,
     required: true,
@@ -15,9 +12,17 @@ const orderSchema = new mongoose.Schema({
     },
   },
   address: {
-    city: { type: String, required: true },
-    street: { type: String, required: true },
-    phone: { type: String },
+    city: { type: String, required: true, minlength: 2 },
+    street: { type: String, required: true, minlength: 2 },
+    phone: {
+      type: String,
+      required: true,
+      validate(value) {
+        if (!validator.isMobilePhone(value, "he-IL")) {
+          throw new Error(`you must insert a valid Israeli phone number`);
+        }
+      },
+    },
   },
   //referance to user object
   user: {
