@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./Unauthorized.css";
 const Unauthorized = () => {
   return (
     <div id="wrapper">

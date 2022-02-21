@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "../styles/Login.css";
-import { login } from "../api/Api";
-import Signup from "./Signup";
+import "./Login.css";
+import { login } from "../../api/Api";
+import Signup from "../Signup/Signup";
 /****************************************************** */
 export default function Login({ setToken, setLoggedUser }) {
   // const [user, setUser] = useState(null);

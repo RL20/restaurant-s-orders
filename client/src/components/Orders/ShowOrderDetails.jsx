@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { deleteOrder, updateOrderStatus } from "../api/Api";
+import { deleteOrder, updateOrderStatus } from "../../api/Api";
+import "./ShowOrderDetails.css";
 
-function ShowOrderDetailsHistory({ orderId, details, setOrders, orders, setOrdersDetails }) {
+function ShowOrderDetails({ orderId, details, setOrders, orders, setOrdersDetails }) {
   const [show, setShow] = useState([]);
   console.log("details", details);
 
@@ -10,7 +11,13 @@ function ShowOrderDetailsHistory({ orderId, details, setOrders, orders, setOrder
     newShow[index] = !show[index];
     setShow(newShow);
   };
-
+  const handleDone = async (id) => {
+    console.log("updated");
+    await updateOrderStatus(id);
+    const newOrder = orders.filter((order) => order._id !== id);
+    setOrders(newOrder);
+    setOrdersDetails(null);
+  };
   const handleCancel = async (id) => {
     console.log("order id canceled", id);
     await deleteOrder(id);
@@ -45,10 +52,13 @@ function ShowOrderDetailsHistory({ orderId, details, setOrders, orders, setOrder
         </tbody>
       </table>
       <button className="btn" onClick={() => handleCancel(orderId)}>
-        מחק הזמנה
+        ביטול הזמנה
+      </button>
+      <button className="btn" onClick={() => handleDone(orderId)}>
+        בוצע
       </button>
     </div>
   );
 }
 
-export default ShowOrderDetailsHistory;
+export default ShowOrderDetails;

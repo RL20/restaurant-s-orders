@@ -1,15 +1,17 @@
 import { BrowserRouter, Route, Switch, useHistory, createContext } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import Login from "./components/Login";
-import Homepage from "./components/HomePage";
-import NotFound from "./components/NotFound";
-import Header from "./components/Header";
+import Login from "./components/Login/Login";
+import Homepage from "./components/HomePage/HomePage";
+import NotFound from "./components/NotFound/NotFound";
+// import Header from "./components/Header";
+import Header from "./components/Header/Header";
 // import Users from "./components/Users";
-import Orders from "./components/Orders";
-import OrdersDone from "./components/OrdersDone";
-import UsersActions from "./components/UsersActions";
+import Orders from "./components/Orders/Orders";
+import OrdersDone from "./components/Orders/OrdersDone";
+// import UsersActions from "./components/Admin/UsersActions/UsersActions";
+import UsersActions from "./components/Admin/UsersActions/UsersActions";
 import Customer from "./components/Customer/Customer";
-import Unauthorized from "./components/Unauthorized";
+import Unauthorized from "./components/Unauthorized/Unauthorized";
 import "./App.css";
 import { getUserByToken } from "./api/Api";
 

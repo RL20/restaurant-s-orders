@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { getOrdersHistory } from "../api/Api";
-import "../styles/users.css";
-import ShowOrderDetailsHistory from "./ShowOrderDetailsHistory.jsx";
+import { getNewOrders } from "../../api/Api";
+import "./Orders.css";
+import ShowOrderDetails from "./ShowOrderDetails.jsx";
 
-export default function OrdersDone() {
+export default function Orders() {
   const [orders, setOrders] = useState(null);
   const [ordersDetails, setOrdersDetails] = useState(null);
   const [orderId, setOrdersId] = useState(null);
   const [show, setShow] = useState([]);
   // const [renderCom, setRenderCom] = useState(false);
   const getAllOrders = async () => {
-    const data = await getOrdersHistory();
+    const data = await getNewOrders();
     // const { data } = await axios.get("http://localhost:9000/api/orders");
     console.log("Orders", data);
     setOrders(data);
@@ -48,7 +48,7 @@ export default function OrdersDone() {
   const showOrders = () => {
     return (
       <div className="wrap-table">
-        <div className="order-details">{ordersDetails && setOrdersId && <ShowOrderDetailsHistory setOrdersDetails={setOrdersDetails} details={ordersDetails} orderId={orderId} setOrders={setOrders} orders={orders} />}</div>
+        <div className="order-details">{ordersDetails && setOrdersId && <ShowOrderDetails setOrdersDetails={setOrdersDetails} details={ordersDetails} orderId={orderId} setOrders={setOrders} orders={orders} />}</div>
         <div className="user-info">
           <table className="styled-table">
             <thead>
@@ -82,5 +82,5 @@ export default function OrdersDone() {
       </div>
     );
   };
-  return <div>{OrdersDone && showOrders()}</div>;
+  return <div>{Orders && showOrders()}</div>;
 }
