@@ -3,21 +3,8 @@ import React, { useState, useEffect } from "react";
 import Update from "../Update/Update";
 import { updateMeal, deleteMeal } from "../../../api/Api";
 
-// import "../../styles/MealItem.css";
 import "./MealItem.css";
-// import "./Meals/MealItem.css";
-/*
-{
- "mealId": "d1",
-  "category": "שתיה",
-  "image": "https://files.mishloha.co.il/files/menu_food_pic/thumbnail/FIL_6314840_1638258750775.jpg?v=2",
-  "name": "קולה",
-  "description": "שניצל בבגאט",
-  "price":25
-}
- */
 
-// function MealItem({ _id, mealId, category, image, name, description, price }) {
 function MealItem({ mealObj, callBackParent }) {
   const { _id, mealId, category, image, name, description, price } = mealObj;
   const [show, setShow] = useState(false);
