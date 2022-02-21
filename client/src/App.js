@@ -43,7 +43,7 @@ function App() {
   }, [loggedUser]);
 
   if (!token) {
-    return <Login setToken={setToken} setLoggedUser={setLoggedUser} setIsAdmin={setIsAdmin} />;
+    return <Login setToken={setToken} setLoggedUser={setLoggedUser} setIsAdmin={setIsAdmin} token={token} />;
   }
   const reset = () => {
     setToken(null);
@@ -57,7 +57,7 @@ function App() {
         <Switch>
           {/* if uder.isAdmi{} */}
 
-          <Route path="/" exact render={() => <Customer loggedUser={loggedUser} handleLogout={reset} />} />
+          <Route path="/" exact render={() => <Customer loggedUser={loggedUser} handleLogout={reset} token={token} />} />
           {/* <Route path="/" exact component={Customer} /> */}
 
           {loggedUser?.isAdmin ? (

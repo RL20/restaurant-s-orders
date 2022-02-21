@@ -21,7 +21,7 @@ function Customer(props) {
     <Suspense fallback={<p>Loading...</p>}>
       <CartProvider>
         {cartIsShown && <Cart onCloseCart={hideCartHandler} user={props.loggedUser} />}
-        <Header onShowCart={showCartHandler} handleLogout={props.handleLogout} user={props.loggedUser} />
+        <Header onShowCart={showCartHandler} handleLogout={props.handleLogout} user={props.loggedUser} token={props.token} />
         <main>
           <Meals />
         </main>

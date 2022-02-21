@@ -45,6 +45,16 @@ export const getOrdersHistory = async () => {
   }
 };
 
+export const addOrder = async (orderObj) => {
+  try {
+    let { data } = await api.post("/orders", orderObj);
+    console.log("data", data);
+    return data;
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
 export const updateOrderStatus = async (id) => {
   try {
     const { data } = await api.put(`/orders/done/${id}`);
@@ -134,23 +144,18 @@ export const login = async (email, password) => {
   }
 };
 
-export const logout = async () => {
-  const token = localStorage.getItem("token");
-  if (!token) {
-    //logout failed
-  }
+export const logout = async (token) => {
   try {
-    const { data } = await api.post(
-      `/users/logout`,
-      {},
-      {
-        headers: { Authorisation: `Bearer ${token}` },
-      }
-    );
-    return data;
+    const auth = `Bearer ${token}`;
+    // const { data } = await api.post(`/users/logout`,{},{headers: { Authorisation: `Bearer ${token}` }});
+    // return data;
+    await api.post("/users/logout", {}, { headers: { Authorization: auth } });
   } catch (e) {
     console.log(e.message);
   }
+  window.localStorage.removeItem("token");
+  window.localStorage.removeItem("loggedUser");
+  // window.location.reload(false);
 };
 /************************Users******************************************/
 export const getUsers = async () => {

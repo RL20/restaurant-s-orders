@@ -3,7 +3,7 @@ import Card from "../UI/Card";
 import MealItem from "./MealItem/MealItem";
 import classes from "./AvailableMeals.module.css";
 import axios from "axios";
-import { getMeals } from "../../api/Api";
+import { getMeals } from "../../../../api/Api";
 
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);

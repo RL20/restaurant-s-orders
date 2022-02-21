@@ -3,17 +3,12 @@ import { useHistory } from "react-router";
 import HeaderCartButton from "./HeaderCartButton";
 import mealsImage from "../../assets/meals.jpg";
 import classes from "./Header.module.css";
-import { userLogOut } from "../../api/Api";
+import { logout } from "../../../../api/Api";
 
 const Header = (props) => {
   const history = useHistory();
-  // const userString = localStorage.getItem("loggedUser");
-  // const userObj = JSON.parse(userString);
-
-  const logout = async () => {
-    await userLogOut();
-    // localStorage.removeItem("token");
-    // localStorage.removeItem("loggedUser");
+  const logoutUser = async () => {
+    await logout(props.token);
     props.handleLogout();
   };
 
@@ -38,7 +33,7 @@ const Header = (props) => {
       <header className={classes.header}>
         <HeaderCartButton onClick={props.onShowCart} />
         <h1>שווארמה זוהר </h1>
-        <button style={btnStyle} onClick={logout}>
+        <button style={btnStyle} onClick={logoutUser}>
           התנתק
         </button>
         {props.user?.isAdmin && (
