@@ -1,8 +1,10 @@
 import axios from "axios";
 
+/************************DB connection**********************************/
 let url;
 
 if (process.env.NODE_ENV === "production") {
+  // url = "api";
   url = "https://restaurant-ord.herokuapp.com/api";
 }
 if (process.env.NODE_ENV === "development") {
@@ -12,23 +14,7 @@ if (process.env.NODE_ENV === "development") {
 export const api = axios.create({
   baseURL: url,
 });
-export const updateOrderStatus = async (id) => {
-  try {
-    const { data } = await api.put(`/orders/done/${id}`);
-    return data;
-  } catch (e) {
-    console.log(e.message);
-    console.dir(e);
-  }
-};
-export const deleteOrder = async (id) => {
-  try {
-    let { data } = await api.delete(`/orders/${id}`);
-    return data;
-  } catch (e) {
-    console.log(e.message);
-  }
-};
+/************************Orders*****************************************/
 export const getOrders = async () => {
   try {
     let { data } = await api.get("/orders");
@@ -38,6 +24,7 @@ export const getOrders = async () => {
     console.log(e.message);
   }
 };
+
 export const getNewOrders = async () => {
   try {
     let { data } = await api.get("/orders/new");
@@ -47,6 +34,7 @@ export const getNewOrders = async () => {
     console.log(e.message);
   }
 };
+
 export const getOrdersHistory = async () => {
   try {
     let { data } = await api.get("/orders/done");
@@ -56,6 +44,26 @@ export const getOrdersHistory = async () => {
     console.log(e.message);
   }
 };
+
+export const updateOrderStatus = async (id) => {
+  try {
+    const { data } = await api.put(`/orders/done/${id}`);
+    return data;
+  } catch (e) {
+    console.log(e.message);
+    console.dir(e);
+  }
+};
+
+export const deleteOrder = async (id) => {
+  try {
+    let { data } = await api.delete(`/orders/${id}`);
+    return data;
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+/************************Meals******************************************/
 export const getMeals = async () => {
   try {
     let { data } = await api.get("/meals");
@@ -65,6 +73,7 @@ export const getMeals = async () => {
     console.log(e.message);
   }
 };
+
 export const getMeal = async (id) => {
   try {
     let { data } = await api.get(`/meals/${id}`);
@@ -74,6 +83,7 @@ export const getMeal = async (id) => {
     console.log(e.message);
   }
 };
+
 export const addMeal = async (obj) => {
   try {
     let { data } = await api.post(`/meals`, obj);
@@ -82,6 +92,7 @@ export const addMeal = async (obj) => {
     console.log(e.message);
   }
 };
+
 export const updateMeal = async (id, obj) => {
   try {
     const { data } = await api.put(`/meals/${id}`, obj);
@@ -101,6 +112,7 @@ export const deleteMeal = async (id) => {
     console.log(e.message);
   }
 };
+/************************Users Authentication***************************/
 export const getUserByToken = async (token) => {
   try {
     let { data } = await api.get(`/users/${token}`);
@@ -111,18 +123,6 @@ export const getUserByToken = async (token) => {
   }
 };
 
-// router.post("/users", signup);
-
-// router.post("/users/logout", auth, logout);
-// router.post("/users/logoutAll", auth, logoutAll);
-// router.get("/users/me", auth, myProfile);
-// router.patch("/users/me", auth, updateMyProfile);
-// router.delete("/users/me", auth, deleteMyProfile);
-
-//get back data object ,insiside there is token so res.data.token
-// setUser(res.data);
-// setToken(res.data.token);
-// setLoggedUser(res.data);
 export const login = async (email, password) => {
   console.log("from login", email, password);
   try {
@@ -133,6 +133,7 @@ export const login = async (email, password) => {
     console.log(e.message);
   }
 };
+
 export const logout = async () => {
   const token = localStorage.getItem("token");
   if (!token) {
@@ -151,8 +152,7 @@ export const logout = async () => {
     console.log(e.message);
   }
 };
-
-//-------------------------------------------------------
+/************************Users******************************************/
 export const getUsers = async () => {
   try {
     let { data } = await api.get("/users");
