@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import API from "../../api/Api";
 import { creatUser } from "../../src/api/Api";
 // import "./Signup.css";
 

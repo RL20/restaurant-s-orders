@@ -1,8 +1,11 @@
 import { useRef, useState } from "react";
 
 import classes from "./Checkout.module.css";
+import validator from "validator";
 
+const isValidPhoneNumber = (value) => validator.isMobilePhone(value, "he-IL") === true;
 const isEmpty = (value) => value.trim() === "";
+const isTwoChars = (value) => parseInt(value.trim().length) >= 3;
 
 const Checkout = (props) => {
   /***********
@@ -47,9 +50,9 @@ const Checkout = (props) => {
     const enteredCity = cityInputRef.current.value;
     const enteredPhone = phoneInputRef.current.value;
 
-    const enteredStreetIsValid = !isEmpty(enteredStreet);
-    const enteredCityIsValid = !isEmpty(enteredCity);
-    const enteredPhoneIsValid = !isEmpty(enteredPhone);
+    const enteredStreetIsValid = isTwoChars(enteredStreet);
+    const enteredCityIsValid = isTwoChars(enteredCity);
+    const enteredPhoneIsValid = isValidPhoneNumber(enteredPhone);
     // const enteredPostalCodeIsValid = isSixChars(enteredPostalCode);
 
     setFormInputsValidity({
@@ -80,13 +83,13 @@ const Checkout = (props) => {
       <div className={streetControlClasses}>
         <label htmlFor="street">רחוב</label>
         <input type="text" id="street" ref={streetInputRef} />
-        {!formInputsValidity.street && <p>Please enter a valid street!</p>}
+        {!formInputsValidity.street && <p>אנא הכנס/י שם רחוב תקין ! (3 אותיות לפחות)</p>}
       </div>
 
       <div className={cityControlClasses}>
         <label htmlFor="city">עיר</label>
         <input type="text" id="city" ref={cityInputRef} />
-        {!formInputsValidity.city && <p>Please enter a valid city!</p>}
+        {!formInputsValidity.city && <p>אנא הכנס/י שם עיר תקין ! (3 אותיות לפחות)</p>}
       </div>
       <div className={phoneCodeControlClasses}>
         <label htmlFor="phone">טלפון</label>
