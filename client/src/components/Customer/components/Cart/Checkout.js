@@ -4,8 +4,9 @@ import classes from "./Checkout.module.css";
 import validator from "validator";
 
 const isValidPhoneNumber = (value) => validator.isMobilePhone(value, "he-IL") === true;
+const isValidPhisAlphanumeric = (value) => validator.isAlphanumeric(value, "he") && parseInt(value.trim().length) >= 3;
 const isEmpty = (value) => value.trim() === "";
-const isTwoChars = (value) => parseInt(value.trim().length) >= 3;
+const isTwoChars = (value) => parseInt(value.trim().length) >= 2;
 
 const Checkout = (props) => {
   /***********
@@ -50,8 +51,8 @@ const Checkout = (props) => {
     const enteredCity = cityInputRef.current.value;
     const enteredPhone = phoneInputRef.current.value;
 
-    const enteredStreetIsValid = isTwoChars(enteredStreet);
-    const enteredCityIsValid = isTwoChars(enteredCity);
+    const enteredStreetIsValid = isValidPhisAlphanumeric(enteredStreet);
+    const enteredCityIsValid = isValidPhisAlphanumeric(enteredCity);
     const enteredPhoneIsValid = isValidPhoneNumber(enteredPhone);
     // const enteredPostalCodeIsValid = isSixChars(enteredPostalCode);
 
@@ -83,18 +84,18 @@ const Checkout = (props) => {
       <div className={streetControlClasses}>
         <label htmlFor="street">רחוב</label>
         <input type="text" id="street" ref={streetInputRef} />
-        {!formInputsValidity.street && <p>אנא הכנס/י שם רחוב תקין ! (3 אותיות לפחות)</p>}
+        {!formInputsValidity.street && <p>אנא הכנס/י שם רחוב תקין בעברית! (3 אותיות לפחות )</p>}
       </div>
 
       <div className={cityControlClasses}>
         <label htmlFor="city">עיר</label>
         <input type="text" id="city" ref={cityInputRef} />
-        {!formInputsValidity.city && <p>אנא הכנס/י שם עיר תקין ! (3 אותיות לפחות)</p>}
+        {!formInputsValidity.city && <p>אנא הכנס/י שם עיר תקין בעברית! (3 אותיות לפחות)</p>}
       </div>
       <div className={phoneCodeControlClasses}>
         <label htmlFor="phone">טלפון</label>
         <input type="text" id="phone" ref={phoneInputRef} />
-        {!formInputsValidity.phone && <p>Please enter a valid phone Number!</p>}
+        {!formInputsValidity.phone && <p>!אנא הכנס מספר טלפון תקין</p>}
       </div>
 
       <div className={classes.actions}>
