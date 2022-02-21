@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { updateMeal } from "../../api/Api";
-import "../../styles/Form.css";
+import { updateMeal } from "../../../api/Api";
+// import "../../styles/Form.css";
+import "./Update.css";
 
 function Update({ mealObj, showState, callBackParent }) {
   const [mealId, setMealId] = useState(mealObj.mealId);
@@ -44,7 +45,7 @@ function Update({ mealObj, showState, callBackParent }) {
   };
   return (
     <div className="form-container">
-      <form onSubmit={confirm} className="create-form" action="">
+      <form onSubmit={confirm} className="update-form" action="">
         <label htmlFor="mealId">מזהה ארוחה</label>
         <input value={mealId} onChange={inputValue} name="mealId" id="name" type="text" />
 
@@ -62,7 +63,7 @@ function Update({ mealObj, showState, callBackParent }) {
 
         <label htmlFor="price">מחיר</label>
         <input value={price} onChange={inputValue} name="price" id="price" type="text" />
-        <button className="btn" type="submit">
+        <button className="update-btn" type="submit">
           אישור
         </button>
       </form>

@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Update from "./Update";
-import { updateMeal, deleteMeal } from "../../api/Api";
+// import Update from "./Update";
+import Update from "../Update/Update";
+import { updateMeal, deleteMeal } from "../../../api/Api";
 
-import "../../styles/MealItem.css";
+// import "../../styles/MealItem.css";
+import "./MealItem.css";
+// import "./Meals/MealItem.css";
 /*
 {
  "mealId": "d1",

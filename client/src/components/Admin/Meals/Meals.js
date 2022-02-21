@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { getMeals, addMeal } from "../../api/Api";
+import { getMeals, addMeal } from "../../../api/Api";
 import MealItem from "./MealItem";
-import Create from "./Create";
-import "../../styles/Meals.css";
+import Create from "../Create/Create";
+// import "../../styles/Meals.css";
+import "./Meals.css";
 
 // import Create from "./Create";
 
