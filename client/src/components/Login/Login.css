@@ -47,9 +47,17 @@
   border-radius: 0.3rem;
   width: 100%;
 }
+.btn1:disabled {
+  background-color: rgb(167, 224, 192);
+  cursor: not-allowed;
+}
 .signup {
   margin-top: 1rem;
   font-size: 1.2rem;
   cursor: pointer;
-  cursor: url("../../assets/Pen.cur"), auto;
+  /* cursor: url("../../assets/Pen.cur"), auto; */
+}
+.error {
+  color: red;
+  font-weight: 500;
 }

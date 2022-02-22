@@ -48,6 +48,10 @@
   border-radius: 0.3rem;
   /* width: 15%; */
 }
+.signup-form-btn:disabled {
+  background-color: rgb(167, 224, 192);
+  cursor: not-allowed;
+}
 .btn-wrap {
   display: flex;
   justify-content: space-between;

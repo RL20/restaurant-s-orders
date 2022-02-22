@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { creatUser } from "../../api/Api";
 import "./Signup.css";
 
-function Signup({ setNewUser, setToken }) {
+function Signup({ setNewUser, setToken, setSingin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [currentToken, setCurrentToken] = useState(null);
   const [error, setError] = useState(false);
+  const [message, setMessage] = useState(true);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,13 +20,15 @@ function Signup({ setNewUser, setToken }) {
     try {
       // const res = await API.post("/users", newUserObject);
       const res = await creatUser(newUserObject);
-      setToken(res.data.token); // when creat a new user log automatically  anvoid send user to log
+      setToken(res.data.token); // when create a new user log automatically  anvoid send user to log
       setCurrentToken(res.data.token);
       localStorage.setItem("token", JSON.stringify(currentToken));
     } catch (err) {
+      setMessage("הפרטים שהזנת אינם תקינים");
       setError(true);
     }
-    window.location.reload();
+    // handleReload();
+    // window.location.reload();
   };
 
   /****************************************** */
@@ -48,16 +51,18 @@ function Signup({ setNewUser, setToken }) {
           <span className=".input-label">סיסמה</span>
           <input className="signup-form-input" type="password" onChange={(e) => setPassword(e.target.value)} />
         </div>
+        {message && <div className="error">{message} </div>}
 
         <div className="btn-wrap">
-          <button className="signup-form-btn" onClick={(e) => setNewUser(false)}>
+          <button className="signup-form-btn" type="button" onClick={() => setSingin(false)}>
             ביטול
           </button>
-          <button className="signup-form-btn" onClick={(e) => handleSubmit(e)}>
+          <button className="signup-form-btn" disabled={password < 7 || !email || name.trim() < 2} onClick={(e) => handleSubmit(e)}>
             שמירה
           </button>
         </div>
       </form>
+
       {error}
     </div>
   );
