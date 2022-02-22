@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const keys = require("../../config/keys");
 
 // {"userId":1,"name":"Harel","cash":10000,"credit":2000}
 //!upgrade to user schema to allowed autentication
@@ -59,7 +60,7 @@ userSchema.methods.toJSON = function () {
 
 userSchema.methods.generateAuthToken = async function () {
   const user = this;
-  const token = jwt.sign({ _id: user._id.toString() }, "tokensecretword");
+  const token = jwt.sign({ _id: user._id.toString() }, `${keys.JWT_SECRET}`);
 
   user.tokens = user.tokens.concat({ token });
   await user.save();
