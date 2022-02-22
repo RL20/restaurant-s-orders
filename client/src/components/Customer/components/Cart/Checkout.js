@@ -4,7 +4,7 @@ import classes from "./Checkout.module.css";
 import validator from "validator";
 
 const isValidPhoneNumber = (value) => validator.isMobilePhone(value, "he-IL") === true;
-const isValidPhisAlphanumeric = (value) => validator.isAlphanumeric(value, "he") && parseInt(value.trim().length) >= 3;
+const isValidPhisAlphanumeric = (value) => validator.isAlphanumeric(value.split(" ").join(""), "he") && parseInt(value.trim().length) >= 3;
 const isEmpty = (value) => value.trim() === "";
 const isTwoChars = (value) => parseInt(value.trim().length) >= 2;
 
