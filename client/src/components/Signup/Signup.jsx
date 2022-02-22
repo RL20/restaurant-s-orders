@@ -18,7 +18,6 @@ function Signup({ setNewUser, setToken, setSingin }) {
       password,
     };
     try {
-      // const res = await API.post("/users", newUserObject);
       const res = await creatUser(newUserObject);
       setToken(res.data.token); // when create a new user log automatically  anvoid send user to log
       setCurrentToken(res.data.token);
@@ -66,37 +65,5 @@ function Signup({ setNewUser, setToken, setSingin }) {
       {error}
     </div>
   );
-  // return (
-  //   <div className="form-container">
-  //     <form className="form-update" onSubmit={handleSubmit}>
-  //       <div className="welcome">Create a New Account</div>
-  //       <div className="form-row1"></div>
-  //       <div className="form-row2">
-  //         <span className=".input-label"> שם</span>
-  //         <input className="input-field" type="text" onChange={(e) => setName(e.target.value)} />
-  //       </div>
-
-  //       <div>
-  //         <span className=".input-label">אימייל</span>
-
-  //         <input className="input-field" type="text" onChange={(e) => setEmail(e.target.value)} />
-  //       </div>
-  //       <div>
-  //         <span className=".input-label">סיסמה</span>
-
-  //         <input className="input-field" type="password" onChange={(e) => setPassword(e.target.value)} />
-  //       </div>
-  //       <div className="form-row3">
-  //         <button className="ui primary button" onClick={(e) => handleSubmit(e)}>
-  //           שמירה
-  //         </button>
-  //         <button className="ui  button" onClick={(e) => setNewUser(false)}>
-  //           ביטול
-  //         </button>
-  //       </div>
-  //     </form>
-  //     {error}
-  //   </div>
-  // );
 }
 export default Signup;
