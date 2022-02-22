@@ -54,7 +54,9 @@ export default function Login({ setToken, setLoggedUser }) {
           </button>
         </div>
       </form>
-      <div onClick={() => setSingin(!singin)}>הרשם</div>
+      <div className="signup" onClick={() => setSingin(!singin)}>
+        הרשם
+      </div>
     </div>
   );
 }

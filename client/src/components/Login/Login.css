@@ -47,3 +47,6 @@
   border-radius: 0.3rem;
   width: 100%;
 }
+.signup {
+  cursor: pointer;
+}
