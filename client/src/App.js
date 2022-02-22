@@ -3,17 +3,13 @@ import React, { useState, useEffect } from "react";
 import Login from "./components/Login/Login";
 import Homepage from "./components/HomePage/HomePage";
 import NotFound from "./components/NotFound/NotFound";
-// import Header from "./components/Header";
 import Header from "./components/Header/Header";
-// import Users from "./components/Users";
 import Orders from "./components/Orders/Orders";
 import OrdersDone from "./components/Orders/OrdersDone";
-// import UsersActions from "./components/Admin/UsersActions/UsersActions";
-import UsersActions from "./components/Admin/UsersActions/UsersActions";
+import AdminActions from "./components/Admin/AdminActions/AdminActions";
 import Customer from "./components/Customer/Customer";
 import Unauthorized from "./components/Unauthorized/Unauthorized";
 import "./App.css";
-import { getUserByToken } from "./api/Api";
 
 // import jwt from "jsonwebtoken";
 function App() {
@@ -65,7 +61,7 @@ function App() {
           {loggedUser?.isAdmin ? (
             <>
               <Route path="/admin" exact component={Homepage} />
-              <Route path="/admin/actions" exact component={UsersActions} />
+              <Route path="/admin/actions" exact component={AdminActions} />
               <Route path="/admin/orders" exact render={() => <Orders loggedUser={loggedUser} />} />
               <Route path="/admin/ordersdone" exact render={() => <OrdersDone loggedUser={loggedUser} />} />
 
