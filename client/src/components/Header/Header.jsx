@@ -20,7 +20,7 @@ export default function Header() {
           <Link to="/admin/actions">
             <button>פעולות</button>
           </Link>
-          <Link to="/admin">
+          <Link to="/">
             <button>בית</button>
           </Link>
         </div>
