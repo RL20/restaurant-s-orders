@@ -2,8 +2,8 @@
 
 Restaurant Order project using MERN development stack
 
-<form action="https://restaurant-ord.herokuapp.com/">
-    <input type="submit" value="Live Demo" style=" font-weight: 500; background-color: #2f80ed; 
+<!-- <form action="https://restaurant-ord.herokuapp.com/">
+    <input type="submit" value="Live Demo" style=" font-weight: 500; background-color: #2f80ed;
     background: #009879;
     color: white;
     font-weight: bold;
@@ -11,7 +11,7 @@ Restaurant Order project using MERN development stack
     cursor: pointer;
     transition: all 0.4s linear;
     border-radius: 5px;"/>
-</form>
+</form> -->
 
 ## Usage
 
