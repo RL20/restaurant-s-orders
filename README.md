@@ -2,11 +2,9 @@
 
 Restaurant Order project using MERN development stack
 
-**[Live Demo](https://restaurant-ord.herokuapp.com/)**
+<!-- **[Live Demo](https://restaurant-ord.herokuapp.com/)** -->
 
-<a href="https://restaurant-ord.herokuapp.com/" target="_blank"> <button>Live Demo</button> </a>
-
-<a href="https://reactjs.org/" target="_blank"> <img src="https://img.icons8.com/color/48/000000/react-native.png"/> </a>
+<a href="https://restaurant-ord.herokuapp.com/" target="_blank"> <img src="./docs/screenshots/demo.png" width="50" height="50"/> </a>
 
 ## Usage
 
@@ -59,7 +57,12 @@ And if not required, can completely delete the order from the databases
 ## Server API Endpoints
 
 user - {\_id, uid, name, email, photoURL, drinkHistory}
-drink - {\_id, userId, amount, timestamp}
+
+meals - {\_id, userId, amount, timestamp}
+
+orders - {\_id, userId, amount, timestamp}
+
+<!-- admin - {} -->
 
 | Request              |           |                              | Response                |               |
 | -------------------- | --------- | ---------------------------- | ----------------------- | ------------- |
@@ -73,6 +76,19 @@ drink - {\_id, userId, amount, timestamp}
 | `/api/drinks/:_id`   | `GET`     | {}                           | drink                   | 404, 500      |
 | `/api/drinks/`       | `POST`    | {userId, amount}             | drink - 201             | 400, 404, 500 |
 
+## Configuration process
+
+In order to run this repo on port localy, add a dev.js file to ./config With the following variables `CONNECT_PASS,JWT_SECRET`
+
+```javascript
+module.exports = {
+  CONNECT_PASS: "<your mongodb password>",
+  JWT_SECRET: "<Password of your choice>",
+};
+```
+
+In order to run this repo on server you must add the variables `CONNECT_PASS,JWT_SECRET` to Config Vars
+
 ## Build process
 
 Run the full-build npm script, then the server script
@@ -83,7 +99,7 @@ Run the full-build npm script, then the server script
 
 This will start the server on port 9000 on your local machine
 
-In order to run this repo on port 3000, add a .env file with `PORT=3000`
+<!-- In order to run this repo on port 3000, add a .env file with `PORT=3000` -->
 
 ## Other Deployment Options
 
@@ -106,8 +122,9 @@ In order to run this repo on port 3000, add a .env file with `PORT=3000`
 - Axios - API
 - Browser localStorage - User authentication
 
-<!-- `Services`
+`Services`
 
-- Firebase - Google authentication
+- Authentication-using packages: bcryptjs ,jsonwebtoken
+<!-- - Firebase - Google authentication
 - Google Extensions - Site extension
 - Chrome Alarm API - Extension notifications -->
