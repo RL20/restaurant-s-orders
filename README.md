@@ -2,9 +2,11 @@
 
 Restaurant Order project using MERN development stack
 
-<form action="https://restaurant-ord.herokuapp.com/">
-    <input type="submit" value="Live Demo"/>
-</form>
+**[Live Demo](https://restaurant-ord.herokuapp.com/)**
+
+<a href="https://restaurant-ord.herokuapp.com/" target="_blank"> <button>Live Demo</button> </a>
+
+<a href="https://reactjs.org/" target="_blank"> <img src="https://img.icons8.com/color/48/000000/react-native.png"/> </a>
 
 ## Usage
 
