@@ -43,7 +43,7 @@ view existing meals , update data, delete meals from the menu, add a new meals
 
 click on the button "Add new meal" will open a form and insert the meal to db
 
-![Action](./docs/screenshots/resturate_4.png)
+![Action-Add meal](./docs/screenshots/resturate_4.png)
 
 ### Orders -
 
