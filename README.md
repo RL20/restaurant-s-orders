@@ -64,6 +64,8 @@ orders - {\_id, orderedItems, address, user,dateAdded}
 
 <!-- admin - {} -->
 
+**Users ↓**
+
 | Request                |           |                              | Response                |               |
 | ---------------------- | --------- | ---------------------------- | ----------------------- | ------------- |
 | Route                  | Method    | Body                         | Success                 | Errors        |
@@ -77,17 +79,17 @@ orders - {\_id, orderedItems, address, user,dateAdded}
 | `/api/users/me`        | `DELETE`  | {}                           | user -200               | 500           |
 | `/api/users/:token`    | `GET`     | {}                           | user -200               | 500           |
 
-**Meals**
+**Meals ↓**
 
-| Request              |           |                                                        | Response                |               |
-| -------------------- | --------- | ------------------------------------------------------ | ----------------------- | ------------- |
-| Route                | Method    | Body                                                   | Success                 | Errors        |
-| -------------------- | --------- | ------------------------------------------------------ | ----------------------- | ------------- |
-| `/api/meals`         | `GET`     | {}                                                     | meals -200              | 500           |
-| `/api/meals/:id/`    | `GET`     | {}                                                     | meal -200               | 404, 500      |
-| `/api/meals`         | `POST`    | {}                                                     | meal -201               | 400           |
-| `/api/meals/:id/`    | `PUT`     | {[mealId, category, image, name, description, price]}  | meal -200               | 400           |
-| `/api/meals/:id/`    | `DELETE`  | {}                                                     | meal -200               | 400, 404      |
+| Request           |           |                                                       | Response     |               |
+| ----------------- | --------- | ----------------------------------------------------- | ------------ | ------------- |
+| Route             | Method    | Body                                                  | Success      | Errors        |
+| ----------------- | --------- | ----------------------------------------------------- | ------------ | ------------- |
+| `/api/meals`      | `GET`     | {}                                                    | meals -200   | 500           |
+| `/api/meals/:id/` | `GET`     | {}                                                    | meal -200    | 404, 500      |
+| `/api/meals`      | `POST`    | {}                                                    | meal -201    | 400           |
+| `/api/meals/:id/` | `PUT`     | {[mealId, category, image, name, description, price]} | meal -200    | 400           |
+| `/api/meals/:id/` | `DELETE`  | {}                                                    | meal -200    | 400, 404      |
 
 ## Configuration process
 
