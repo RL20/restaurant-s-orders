@@ -56,25 +56,26 @@ And if not required, can completely delete the order from the databases
 
 ## Server API Endpoints
 
-user - {\_id, uid, name, email, photoURL, drinkHistory}
+user - {\_id, email, password, isAdmin,tokens}
 
-meals - {\_id, userId, amount, timestamp}
+meals - {\_id, mealId, image,name, description,price}
 
-orders - {\_id, userId, amount, timestamp}
+orders - {\_id, orderedItems, address, user,dateAdded}
 
 <!-- admin - {} -->
 
-| Request              |           |                              | Response                |               |
-| -------------------- | --------- | ---------------------------- | ----------------------- | ------------- |
-| Route                | Method    | Body                         | Success                 | Errors        |
-| -------------------- | --------- | ---------------------------- | ----------------------- | ------------- |
-| `/api/users`         | `GET`     | {}                           | [user, user, user, ...] | 404, 500      |
-| `/api/users/:authId` | `GET`     | {}                           | user                    | 404, 500      |
-| `/api/users/`        | `POST`    | {uid, name, email, photoURL} | user - 201              | 400, 404, 500 |
-| `/api/users/:id`     | `PUT`     | {}                           | user - 201              | 400, 404, 500 |
-| `/api/drinks?userId` | `GET`     | {}                           | [drink, drink, ...]     | 404, 500      |
-| `/api/drinks/:_id`   | `GET`     | {}                           | drink                   | 404, 500      |
-| `/api/drinks/`       | `POST`    | {userId, amount}             | drink - 201             | 400, 404, 500 |
+| Request                |           |                              | Response                |               |
+| ---------------------- | --------- | ---------------------------- | ----------------------- | ------------- |
+| Route                  | Method    | Body                         | Success                 | Errors        |
+| --------------------   | --------- | ---------------------------- | ----------------------- | ------------- |
+| `/api/users`           | `POST`    | {name,email,password}        | { user, token } -201    | 400           |
+| `/api/users/login`     | `POST`    | {email,password}             | { user, token } -200    | 400           |
+| `/api/users/logout`    | `POST`    | {token}                      | 200                     | 400           |
+| `/api/users/logoutAll` | `POST`    | {tokens}                     | 200                     | 400, 401      |
+| `/api/users/me`        | `GET`     | {}                           | user -200               | 400, 401, 500 |
+| `/api/users/me`        | `PATCH`   | {[name, email, password]}    | user -200               | 400, 401, 500 |
+| `/api/users/me`        | `DELETE`  | {}                           | user -200               | 500           |
+| `/api/users/:token`    | `GET`     | {}                           | user -200               | 500           |
 
 ## Configuration process
 
