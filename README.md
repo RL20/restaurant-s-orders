@@ -91,6 +91,21 @@ orders - {\_id, orderedItems, address, user,dateAdded}
 | `/api/meals/:id/` | `PUT`    | {[mealId, category, image, name, description, price]} | meal -200    | 400         |
 | `/api/meals/:id/` | `DELETE` | {}                                                    | meal -200    | 400, 404    |
 
+**Orders ↓**
+
+| Request                |           |                                 | Response                |               |
+| ---------------------- | --------- | ------------------------------- | ----------------------- | ------------- |
+| Route                  | Method    | Body                            | Success                 | Errors        |
+| --------------------   | --------- | ----------------------------    | ----------------------- | ------------- |
+| `/api//orders`         | `GET`     | {}                              | orders -200             | 500           |
+| `/api/orders/new`      | `GET`     | {}                              | orders -200             | 500           |
+| `/api/orders/done`     | `GET`     | {}                              | orders -200             | 500           |
+| `/api/orders/:id/`     | `GET`     | {}                              | order -200              | 404, 500      |
+| `/api/orders`          | `POST`    | {}                              | order -201              | 400           |
+| `/api/orders/done/:id` | `PUT`     | {}                              | order -200              | 400, 404      |
+| `/api/orders/:id/`     | `PUT`     | {[orderedItems, address, user]} | order -200              | 400, 404      |
+| `/api/orders/:id/`     | `DELETE`  | {}                              | meal -200               | 400, 404      |
+
 ## Configuration process
 
 In order to run this repo on port localy, add a dev.js file to ./config With the following variables `CONNECT_PASS,JWT_SECRET`
