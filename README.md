@@ -12,45 +12,39 @@ There are two kinds of users -Admin and Customer.
 
 Logging in as a Customer Grants access to the home page where you can order food
 
-Logging in as an Admin Grants access to the home page & control panel.
-
+Logging in as an Admin grants access to the home page & control panel.
 An admin button will appear in the top toolbar and will allow access to the control panel.
-
-the control panel contains these management options:
-Home, Actions, Orders, Order history
+The control panel contains these management options: Home, Actions, Orders, Order history
 
 ### Home Page -
 
-Customer-can order food and able to enter only this page
+Customer-can order food and is able to enter this page alone.
 
-Admin- can have access to control panel via admin button
+Admin- can have access to the control panel via the admin button.
 
 ![Home Page](./docs/screenshots/resturate_2.png)
 
 ### Actions -
 
-The action page allows admin,
-view existing meals , update data, delete meals from the menu, add a new meals
+The action page allows an admin to view existing meals, update data, delete meals from the menu, and add new meals.
 
 ![Action](./docs/screenshots/resturate_3.png)
 
-click on the button "Add new meal" will open a form and insert the meal to db
+Click the "Add new meal" button to open a form and insert the meal to the DB.
 
 ![Action-Add meal](./docs/screenshots/resturate_4.png)
 
 ### Orders -
 
-Here Admin can see and manege orders ,
-click on spcipic order from the list will open Order Details table ,below Admin can confirm the order done ,or cancel the order.
+Here an Admin can see and manage orders, click on a specific order from the list which will open the Order Details table, below, the Admin can confirm the order once done, or cancel the order.
 
-confirn order will save the order in Order history
+Confirming the order will save the order in the Order history.
 
 ![Orders](./docs/screenshots/resturate_5.png)
 
 ### Orders History -
 
-Here Admin can see All orders Done to follow up ,
-And if not required, can completely delete the order from the databases
+Here an Admin can see all done Orders and follow up, and if not required, can completely delete the order from the database.
 
 ![Orders History](./docs/screenshots/resturate_6.png)
 
@@ -108,16 +102,16 @@ orders - {\_id, orderedItems, address, user,dateAdded}
 
 ## Configuration process
 
-In order to run this repo on port localy, add a dev.js file to ./config With the following variables `CONNECT_PASS,JWT_SECRET`
+In order to run this repo locally, add a dev.js file to ./config With the following variables: `CONNECT_PASS,JWT_SECRET`
 
 ```javascript
 module.exports = {
-  CONNECT_PASS: "<your mongodb password>",
+  CONNECT_PASS: "<your mongoDB password>",
   JWT_SECRET: "<Password of your choice>",
 };
 ```
 
-In order to run this repo on server you must add the variables `CONNECT_PASS,JWT_SECRET` to Config Vars
+In order to run this repo on a server you must add the variables `CONNECT_PASS,JWT_SECRET` to Config Vars
 
 ## Build process
 
