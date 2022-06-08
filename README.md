@@ -23,7 +23,7 @@ Customer-can order food and is able to enter this page alone.
 Admin- can have access to the control panel via the admin button.
 
 ![Home Page](./docs/screenshots/resturate_2.png)
-![alt text](resturate_2.png?raw=true "Optional Title")
+![alt text](./docs/screenshots/resturate_2.png?raw=true "Optional Title")
 
 
 ### Actions -
