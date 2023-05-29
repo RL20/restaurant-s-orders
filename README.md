@@ -24,6 +24,7 @@ Admin- can have access to the control panel via the admin button.
 
 ![Home Page](./docs/screenshots/resturate_2.png)
 
+
 ### Actions -
 
 The action page allows an admin to view existing meals, update data, delete meals from the menu, and add new meals.
