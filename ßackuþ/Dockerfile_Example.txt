@@ -1,0 +1,25 @@
+# Use the official Node.js 17 image
+FROM node:17
+
+# Set the working directory in the container
+WORKDIR /usr/src/app
+
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application code
+COPY . /usr/src/app
+
+# Expose the port specified in the Node.js application (default is 9000)
+EXPOSE 9000
+
+# Command to run the application
+CMD ["npm", "start"]
+
+Than run the command:
+docker build --tag <app_name> .
+for Example↓
+docker build --tag restaurant_app .
